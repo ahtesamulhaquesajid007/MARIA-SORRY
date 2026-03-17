@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Maria ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 30px 15px;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+#typing {
+    font-size: 16px;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+    min-height: 200px;
+}
+
+/* IMAGE STYLE */
+.photo {
+    width: 220px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* BUTTONS */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#noBtn {
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    color: red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Maria, I’m Really Sorry ❤️</h1>
+
+    <!-- YOUR IMAGE -->
+    <img src="maria.jpg" class="photo">
+
+    <p id="typing"></p>
+
+    <h3>Will you forgive me? 🥺</h3>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes ❤️</button>
+    <button id="noBtn" onmouseover="moveButton()">No 😅</button>
+
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Typing text
+const text = `Maria, আমি জানি আমি তোমার জন্য perfect না… 😔
+
+সবচেয়ে বড় কথা, আমি তোমার রাগ ঠিকভাবে ভাঙাতে পারি না।
+আমার মধ্যে অনেক ভুল আছে…
+
+তুমি কি জানো না, তোমাকে নিয়ে আমি কতটা jealous আর insecure হয়ে যাই?
+
+আমি সত্যিই sorry Maria… আমি change হতে চাই ❤️
+
+Please, এইবারের মতো আমাকে মাফ করে দাও 💔
+
+— Gadha Sajid`;
+
+let i = 0;
+function typingEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 30);
+    }
+}
+typingEffect();
+
+// Move button
+function moveButton() {
+    var button = document.getElementById("noBtn");
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+// Yes click
+function yesClicked() {
+    document.body.innerHTML = `
+    <h1 style="margin-top:100px;">Thank You Maria ❤️🥺</h1>
+    <p>I Love You So Much 💖<br>— Gadha Sajid</p>`;
+}
+
+// Hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
